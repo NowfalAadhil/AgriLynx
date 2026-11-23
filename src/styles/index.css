@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-page text-ink font-sans antialiased; margin: 0; overflow-x: hidden; }
+  :focus-visible { outline: 2px solid #2D6A4F; outline-offset: 2px; border-radius: 4px; }
+  h1, h2, h3 { letter-spacing: -0.01em; }
+}
+
+@layer components {
+  .card { @apply bg-white border border-line rounded-card shadow-card; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 min-h-[40px] text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-brand text-white hover:bg-brand-600; }
+  .btn-secondary { @apply btn bg-white border border-line text-ink hover:bg-tint; }
+  .btn-ghost { @apply btn text-muted hover:bg-tint hover:text-ink; }
+  .btn-danger { @apply btn bg-white border border-danger/40 text-danger-ink hover:bg-danger-soft; }
+  .input { @apply w-full rounded-lg border border-line bg-white px-3 min-h-[40px] text-sm text-ink placeholder:text-muted; }
+  .label-sm { @apply text-xs font-medium uppercase tracking-wide text-muted; }
+}
+
+@keyframes toast-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.toast-in { animation: toast-in .18s ease-out; }
+@keyframes scan { 0% { top: 0 } 100% { top: calc(100% - 3px) } }
+.scan-line { animation: scan 1.4s ease-in-out infinite alternate; }
+@media (prefers-reduced-motion: reduce) { .toast-in, .scan-line { animation: none; } }
